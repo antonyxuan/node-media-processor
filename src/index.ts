@@ -8,7 +8,7 @@ export class AudioProcessor {
     private args: string[];
     private cmdOptions: any;
     private process!: ChildProcess;
-    private _stream!: NodeJS.ReadableStream;
+    private stream!: NodeJS.ReadableStream;
 
     constructor(options = {}) {
         const defaults = {
@@ -50,7 +50,7 @@ export class AudioProcessor {
         const err = cp.stderr
 
         this.process = cp // expose child process
-        this._stream = rec // expose output stream
+        this.stream = rec // expose output stream
 
         cp.on('close', code => {
             if (code === 0) return
@@ -81,21 +81,25 @@ Enable debugging with the environment variable DEBUG=record.`
 
     pause() {
         this.process!.kill('SIGSTOP')
-        this._stream!.pause()
+        this.stream!.pause()
         debug('Paused collecting audio')
     }
 
     resume() {
         this.process!.kill('SIGCONT')
-        this._stream!.resume()
+        this.stream!.resume()
         debug('Resumed collecting audio')
     }
 
     isPaused() {
-        return this._stream!.isPaused()
+        return this.stream!.isPaused()
     }
 
-    stream() {
-        return this._stream!
+    getStream() {
+        return this.stream!
+    }
+
+    getProcess() {
+        return this.process!
     }
 }
