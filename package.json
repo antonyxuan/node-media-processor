@@ -1,0 +1,29 @@
+{
+  "name": "@antonyxuan/media-processor",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Antony Xuan",
+  "license": "ISC",
+  "keywords": [
+    "sox",
+    "audio",
+    "speech",
+    "record"
+  ],
+  "description": "processing audio media used for speech recognition",
+  "devDependencies": {
+    "@types/node": "^22.4.1",
+    "typescript": "^5.5.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antonyxuan/node-media-processor"
+  },
+  "bugs": {
+    "url": "https://github.com/antonyxuan/node-media-processor/issues"
+  },
+  "homepage": "https://github.com/antonyxuan/node-media-processor"
+}
