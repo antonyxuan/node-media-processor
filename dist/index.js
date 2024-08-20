@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AudioProcessor = void 0;
 const node_child_process_1 = require("node:child_process");
 const node_console_1 = require("node:console");
 const processors_1 = __importDefault(require("./processors"));
@@ -78,7 +79,4 @@ Enable debugging with the environment variable DEBUG=record.`);
         return this._stream;
     }
 }
-let p = new AudioProcessor({ endOnSilence: true });
-p.stream().on('data', chunk => {
-    (0, node_console_1.debug)(`${chunk.length}`);
-});
+exports.AudioProcessor = AudioProcessor;

@@ -2,7 +2,7 @@ import { spawn, ChildProcess } from 'node:child_process';
 import { debug } from 'node:console';
 import processors from './processors';
 
-class AudioProcessor {
+export class AudioProcessor {
     private options: any;
     private cmd: string;
     private args: string[];
@@ -98,5 +98,4 @@ Enable debugging with the environment variable DEBUG=record.`
     stream() {
         return this._stream!
     }
-
 }

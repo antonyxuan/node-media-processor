@@ -1,11 +1,11 @@
 {
   "name": "@antonyxuan/media-processor",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc"
   },
-  "author": "Antony Xuan",
+  "author": "Antony Xuan <antony.xuan@gmail.com>",
   "license": "ISC",
   "keywords": [
     "sox",
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/antonyxuan/node-media-processor/issues"
   },
-  "homepage": "https://github.com/antonyxuan/node-media-processor"
+  "homepage": "https://github.com/antonyxuan/node-media-processor",
+  "files": [
+    "dist"
+  ]
 }
