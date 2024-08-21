@@ -4,7 +4,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "publish": "npm run build && npm publish"
+    "publish": "npm run build && npm publish",
+    "test": "jest"
   },
   "author": "Antony Xuan <antony.xuan@gmail.com>",
   "license": "ISC",

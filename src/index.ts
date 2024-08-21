@@ -1,8 +1,9 @@
 import { spawn, ChildProcess } from 'node:child_process';
-import { debug } from 'node:console';
+import createDebug from 'debug';
 import processors from './processors';
 
 export class AudioProcessor {
+    private debug = createDebug('AudioProcessor');
     private options: any;
     private cmd: string;
     private args: string[];
@@ -34,16 +35,14 @@ export class AudioProcessor {
         this.cmd = cmd
         this.args = args
         this.cmdOptions = Object.assign({ encoding: 'binary', stdio: 'pipe' }, spawnOptions)
-
-        debug(`Started recording`)
-        debug(this.options)
-        debug(` ${this.cmd} ${this.args.join(' ')}`)
-
-        return this.start()
     }
 
     start() {
         const { cmd, args } = this
+
+        this.debug(`Started reading`)
+        this.debug(this.options)
+        this.debug(` ${this.cmd} ${this.args.join(' ')}`)
 
         const cp = spawn(cmd, args)
         const rec = cp.stdout
@@ -56,20 +55,20 @@ export class AudioProcessor {
             if (code === 0) return
             rec.emit('error', `${this.cmd} has exited with error code ${code}.
 
-Enable debugging with the environment variable DEBUG=record.`
+Enable debugging with the environment variable DEBUG=AudioProcessor.`
             )
         })
 
         err.on('data', chunk => {
-            debug(`STDERR: ${chunk}`)
+            this.debug(`STDERR: ${chunk}`)
         })
 
         rec.on('data', chunk => {
-            debug(`Processing ${chunk.length} bytes`)
+            this.debug(`Processing ${chunk.length} bytes`)
         })
 
         rec.on('end', () => {
-            debug('Audio Processing ended')
+            this.debug('Audio Processing ended')
         })
 
         return this;
@@ -82,13 +81,13 @@ Enable debugging with the environment variable DEBUG=record.`
     pause() {
         this.process!.kill('SIGSTOP')
         this.stream!.pause()
-        debug('Paused collecting audio')
+        this.debug('Paused collecting audio')
     }
 
     resume() {
         this.process!.kill('SIGCONT')
         this.stream!.resume()
-        debug('Resumed collecting audio')
+        this.debug('Resumed collecting audio')
     }
 
     isPaused() {
