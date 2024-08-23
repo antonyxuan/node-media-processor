@@ -7,11 +7,12 @@ module.exports = (options: {
     silence: any;
     thresholdEnd: any;
     device?: any;
-    audioType: any;
     input: any;
     output: any;
 }) => {
     const cmd = 'sox'
+
+    const input = options.input ? options.input : '--type waveaudio --default-device';
 
     let args = [
         '--no-show-progress',
@@ -19,8 +20,7 @@ module.exports = (options: {
         '--channels', options.channels,
         '--encoding', 'signed-integer',
         '--bits', '16',
-        '--type', options.audioType,
-        options.input,
+        input,
         options.output
     ]
 

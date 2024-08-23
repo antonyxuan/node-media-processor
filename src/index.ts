@@ -22,8 +22,7 @@ export class AudioProcessor {
             silence: '1.0',
             processor: 'sox',
             endOnSilence: false,
-            audioType: 'waveaudio',
-            input: '--default-device',
+            input: '',
             output: '-p',
         }
 
