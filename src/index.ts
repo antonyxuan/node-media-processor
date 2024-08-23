@@ -22,8 +22,10 @@ export class AudioProcessor {
             silence: '1.0',
             processor: 'sox',
             endOnSilence: false,
-            input: '',
-            output: '-p',
+            inputType: 'waveaudio',
+            input: '--default-device',
+            outputType: 'wav',
+            output: '-',
         }
 
         this.options = Object.assign(defaults, options)

@@ -1,10 +1,9 @@
 {
   "name": "@antonyxuan/media-processor",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "publish": "npm run build && npm publish --access public",
     "test": "jest"
   },
   "author": "Antony Xuan <antony.xuan@gmail.com>",
