@@ -28,7 +28,7 @@ module.exports = (options: {
 
     if (options.endOnSilence) {
         args = args.concat([
-            'silence', '1', '0.01', options.thresholdStart || options.threshold + '%',
+            'silence', '0',
             '1', options.silence, options.thresholdEnd || options.threshold + '%'
         ])
     }
